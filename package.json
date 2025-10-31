@@ -8,7 +8,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ismailkarsli/mqtt-trie.git"
+    "url": "git+https://github.com/ismailkarsli/mqtt-trie.git"
   },
   "main": "dist/index.js",
   "scripts": {
