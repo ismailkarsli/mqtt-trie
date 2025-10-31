@@ -1,4 +1,4 @@
-type Handler = (topic: string, msg: ArrayBufferLike) => void;
+export type Handler = (topic: string, message: ArrayBufferLike) => void;
 
 interface TrieNode {
   children: Record<string, TrieNode>;
