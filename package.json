@@ -13,7 +13,8 @@
   "main": "dist/index.js",
   "scripts": {
     "prepack": "rolldown -c",
-    "check": "tsgo --noEmit"
+    "check": "tsgo --noEmit",
+    "test": "node --test"
   },
   "keywords": [
     "mqtt",
@@ -21,11 +22,18 @@
     "topic",
     "matching"
   ],
-  "packageManager": "pnpm@10.20.0",
   "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.0",
+    "@semantic-release/npm": "^13.1.1",
     "@types/node": "^24.9.2",
     "@typescript/native-preview": "7.0.0-dev.20251031.1",
     "rolldown": "1.0.0-beta.45",
-    "rolldown-plugin-dts": "^0.17.3"
-  }
+    "rolldown-plugin-dts": "^0.17.3",
+    "semantic-release": "^25.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@10.20.0"
 }
