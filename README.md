@@ -27,7 +27,7 @@ import { MqttTrie } from "mqtt-trie";
 const trie = new MqttTrie();
 
 // Define a handler
-const handler = (topic: string, msg: ArrayBufferLike) => {
+const handler = (topic: string, msg: Buffer) => {
   console.log(`Received on ${topic}:`, msg.toString());
 };
 
@@ -40,7 +40,9 @@ trie.add("home/#", handler);
 const handlers = trie.match("home/kitchen/temperature");
 
 // Execute matched handlers
-handlers.forEach((fn) => fn("home/kitchen/temperature", new ArrayBuffer(8)));
+handlers.forEach((fn) =>
+  fn("home/kitchen/temperature", Buffer.from([1, 2, 3])),
+);
 ```
 
 ### Usage with MQTT.js
@@ -65,34 +67,26 @@ client.on("message", trie.dispatch.bind(trie));
 
 ## API Reference
 
-### Interface: Handler
-
-##### type Handler = (topic: string, message: ArrayBufferLike) => void;
-
-A handler function type that takes a topic and a message as arguments.
+##### type Handler = (topic: string, message: Buffer) => void;
 
 ### Class: MqttTrie
 
-#### Methods:
-
 ##### add(pattern: string, handler: Handler): void
 
-Adds a pattern subscription with a handler function.
+Add a new pattern subscription.
 
 ##### match(topic: string): Handler[]
 
-Matches a topic to get all applicable handlers.
+Get all applicable handlers for a given topic.
 
-##### dispatch(topic: string, message: ArrayBufferLike): void
+##### dispatch(topic: string, message: Buffer): void
 
-Dispatches a message to all matched handlers.
-
-Shortcut for `match(topic).forEach(handler => handler(topic, message))`.
+Dispatch a message to all applicable handlers. Shortcut for `match(topic).forEach(handler => handler(topic, message))`.
 
 ##### remove(pattern: string, handler: Handler): void
 
-Removes a pattern subscription with a handler function.
+Remove a pattern subscription.
 
 ##### clear(): void
 
-Clears all subscriptions.
+Clear all pattern subscriptions.

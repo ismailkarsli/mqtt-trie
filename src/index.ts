@@ -1,4 +1,4 @@
-export type Handler = (topic: string, payload: Buffer<ArrayBufferLike>) => void;
+export type Handler = (topic: string, payload: Buffer) => void;
 
 interface TrieNode {
   children: Record<string, TrieNode>;
@@ -37,7 +37,7 @@ export class MqttTrie {
     return result;
   }
 
-  dispatch(topic: string, payload: Buffer<ArrayBufferLike>) {
+  dispatch(topic: string, payload: Buffer) {
     const handlers = this.match(topic);
     for (const handler of handlers) {
       handler(topic, payload);
