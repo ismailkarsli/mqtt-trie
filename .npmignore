@@ -3,5 +3,4 @@ test
 rolldown.config.ts
 /.github
 .releaserc.json
-README.md
 tsconfig.json
