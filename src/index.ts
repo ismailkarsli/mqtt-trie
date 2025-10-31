@@ -36,4 +36,19 @@ export class MqttTrie {
     search(this.root, 0);
     return result;
   }
+
+  remove(pattern: string, handler: Handler) {
+    let node = this.root;
+    for (const part of pattern.split("/")) {
+      const child = node.children[part];
+      if (!child) return;
+      node = child;
+    }
+    const index = node.handlers?.indexOf(handler);
+    if (index !== undefined && index >= 0) node.handlers?.splice(index, 1);
+  }
+
+  clear() {
+    this.root = { children: {} };
+  }
 }

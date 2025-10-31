@@ -80,7 +80,14 @@ Adds a pattern subscription with a handler function.
 
 Matches a topic to get all applicable handlers.
 
+##### remove(pattern: string, handler: (topic: string, message: ArrayBufferLike) => void): void
+
+Removes a pattern subscription with a handler function.
+
+##### clear(): void
+
+Clears all subscriptions.
+
 ## To be implemented
 
-- `remove()` and `clear()` methods to remove subscriptions and clear the trie.
 - Testing cases
