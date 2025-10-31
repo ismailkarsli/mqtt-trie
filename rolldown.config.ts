@@ -1,6 +1,8 @@
 import { defineConfig } from "rolldown";
+import { dts } from "rolldown-plugin-dts";
 
 export default defineConfig({
+  plugins: [dts()],
   input: "src/index.ts",
   output: {
     dir: "dist",
@@ -9,5 +11,4 @@ export default defineConfig({
     cleanDir: true,
   },
   platform: "browser",
-  tsconfig: "./tsconfig.json",
 });
