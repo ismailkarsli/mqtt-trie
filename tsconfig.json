@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "module": "ESNext",
+    "noEmit": true,
+    "module": "NodeNext",
     "target": "ES2024",
     "lib": [
       "ES2024",
@@ -13,6 +12,7 @@
     "declarationMap": true,
     "noUncheckedIndexedAccess": true,
     "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
     "exactOptionalPropertyTypes": true,
     "strict": true,
     "verbatimModuleSyntax": true,
