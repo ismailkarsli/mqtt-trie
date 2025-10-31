@@ -37,6 +37,13 @@ export class MqttTrie {
     return result;
   }
 
+  dispatch(topic: string, message: ArrayBufferLike) {
+    const handlers = this.match(topic);
+    for (const handler of handlers) {
+      handler(topic, message);
+    }
+  }
+
   remove(pattern: string, handler: Handler) {
     let node = this.root;
     for (const part of pattern.split("/")) {

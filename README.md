@@ -60,27 +60,36 @@ client.on("connect", () => {
   client.subscribe("home/kitchen/temperature");
 });
 
-client.on("message", (topic, message) => {
-  const handlers = trie.match(topic);
-  handlers.forEach((fn) => fn(topic, message));
-});
+client.on("message", trie.dispatch);
 ```
 
 ## API Reference
+
+### Interface: Handler
+
+##### type Handler = (topic: string, message: ArrayBufferLike) => void;
+
+A handler function type that takes a topic and a message as arguments.
 
 ### Class: MqttTrie
 
 #### Methods:
 
-##### add(pattern: string, handler: (topic: string, message: ArrayBufferLike) => void): void
+##### add(pattern: string, handler: Handler): void
 
 Adds a pattern subscription with a handler function.
 
-##### match(topic: string): ((topic: string, message: ArrayBufferLike) => void)[]
+##### match(topic: string): Handler[]
 
 Matches a topic to get all applicable handlers.
 
-##### remove(pattern: string, handler: (topic: string, message: ArrayBufferLike) => void): void
+##### dispatch(topic: string, message: ArrayBufferLike): void
+
+Dispatches a message to all matched handlers.
+
+Shortcut for `match(topic).forEach(handler => handler(topic, message))`.
+
+##### remove(pattern: string, handler: Handler): void
 
 Removes a pattern subscription with a handler function.
 
