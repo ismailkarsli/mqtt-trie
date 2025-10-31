@@ -2,9 +2,10 @@
   "name": "mqtt-trie",
   "author": "İsmail Karslı <ismail@karsli.net>",
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "MQTT trie matcher for efficient topic matching",
   "homepage": "https://github.com/ismailkarsli/mqtt-trie#readme",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/ismailkarsli/mqtt-trie.git"

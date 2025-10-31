@@ -60,7 +60,7 @@ client.on("connect", () => {
   client.subscribe("home/kitchen/temperature");
 });
 
-client.on("message", trie.dispatch);
+client.on("message", trie.dispatch.bind(trie));
 ```
 
 ## API Reference
@@ -96,7 +96,3 @@ Removes a pattern subscription with a handler function.
 ##### clear(): void
 
 Clears all subscriptions.
-
-## To be implemented
-
-- Testing cases

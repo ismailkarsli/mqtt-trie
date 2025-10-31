@@ -12,6 +12,7 @@
     "declaration": true,
     "declarationMap": true,
     "noUncheckedIndexedAccess": true,
+    "allowImportingTsExtensions": true,
     "exactOptionalPropertyTypes": true,
     "strict": true,
     "verbatimModuleSyntax": true,
